@@ -34,7 +34,7 @@ global.ERR = (err) => {
     .setAuthor({ name: `Error: '${err.message}'` })
     .setDescription(`STACKTRACE:\n\`\`\`${err.stack.slice(0, 4000)}\`\`\``)
     .setColor('RED');
-  client.channels.cache.get(config.logChannel).send({ embeds: [embed] });
+  client.channels.cache.get(config.commands.DoBchecking.logChannelID).send({ embeds: [embed] });
   return;
 };
 
