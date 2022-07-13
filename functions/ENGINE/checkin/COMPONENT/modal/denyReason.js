@@ -4,7 +4,7 @@ const checkin = require('../../../../../database/models/Checkin');
 
 module.exports.run = async (interaction) => {
   interaction.deferUpdate();
-  const reason = interaction.fields.getTextInputValue('denyReasonText');
+  const reason = interaction.fields.getTextInputValue('denyReasonText') || 'No reason given';
   const oldEmbed = interaction.message.embeds[0];
   const userID = oldEmbed.fields.find((field) => field.name === 'ID').value;
   await checkin.update({ ongoing: false, alreadyChecked: false }, { where: { ID: userID } });
@@ -19,7 +19,7 @@ module.exports.run = async (interaction) => {
     .setDescription(oldEmbed.description)
     .setColor('RED')
     .setThumbnail(oldEmbed.thumbnail.url)
-    .addField('Reason', reason || 'No reason given')
+    .addField('Reason', reason)
     .addFields(oldEmbed.fields);
   if (member) {
     member.roles.add(config.functions.checkin.roles.add.deny);
