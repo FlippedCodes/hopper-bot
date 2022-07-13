@@ -39,17 +39,9 @@ function sendToVerification(message, date, currentCheckin) {
         .setLabel('Keep out')
         .setStyle('DANGER'),
     ]);
-  // const denyReason = new MessageActionRow()
-  //   .addComponents([
-  //     new TextInputComponent()
-  //       .setCustomId('denyReason')
-  //       .setLabel('Reason')
-  //       .setPlaceholder('uNdErAgE')
-  //       .setRequired(true)
-  //       .setStyle('SHORT'),
-  //   ]);
   const unixDate = date.format('X');
   const creationDate = moment(message.author.createdAt).format('X');
+  const age = moment().diff(date, 'years');
   const embed = new MessageEmbed()
     .setAuthor({ name: message.author.tag })
     .setThumbnail(message.author.displayAvatarURL({ extension: 'png', size: 4096 }))
@@ -57,7 +49,7 @@ function sendToVerification(message, date, currentCheckin) {
     .addField('Was verfied before', prettyCheck(currentCheckin.alreadyChecked), true)
     .addField('Verification attempt', `${currentCheckin.count}`, true)
     .addField('DoB', `<t:${unixDate}:D>`, true)
-    .addField('Born', `<t:${unixDate}:R>`, true)
+    .addField('Age', `${age}`, true)
     .addField('Creation Date', `<t:${creationDate}:D>`, true)
     .addField('Since creation', `<t:${creationDate}:R>`, true)
     .addField('ID', message.author.id, true)
