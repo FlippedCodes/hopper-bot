@@ -16,6 +16,7 @@ module.exports.run = async (interaction) => {
     .setDescription(oldEmbed.description)
     .setColor('GREEN')
     .setThumbnail(oldEmbed.thumbnail.url)
+    .addField('Allowed by', `${interaction.user}`)
     .addFields(oldEmbed.fields);
   if (member) {
     member.roles.add(config.functions.checkin.roles.add.allow);
