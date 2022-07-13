@@ -5,7 +5,9 @@ const checkin = require('../../../../../database/models/Checkin');
 module.exports.run = async (interaction) => {
   interaction.deferUpdate();
   const reason = interaction.fields.getTextInputValue('denyReasonText') || 'No reason given';
-  const oldEmbed = interaction.message.embeds[0];
+  const oldEmbeds = interaction.message.embeds;
+  if (oldEmbeds.length === 0) interaction.user.send('This verification broken! Please reach out to phil.');
+  const oldEmbed = oldEmbeds[0];
   const userID = oldEmbed.fields.find((field) => field.name === 'ID').value;
   await checkin.update({ ongoing: false, alreadyChecked: false }, { where: { ID: userID } });
   const member = interaction.guild.members.cache.get(userID);
