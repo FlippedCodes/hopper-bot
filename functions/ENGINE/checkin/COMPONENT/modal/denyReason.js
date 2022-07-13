@@ -19,7 +19,7 @@ module.exports.run = async (interaction) => {
     .setDescription(oldEmbed.description)
     .setColor('RED')
     .setThumbnail(oldEmbed.thumbnail.url)
-    .addField('Reason', reason)
+    .addField('Reason', reason || 'No reason given')
     .addFields(oldEmbed.fields);
   if (member) {
     member.roles.add(config.functions.checkin.roles.add.deny);
