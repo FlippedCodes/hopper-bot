@@ -100,7 +100,7 @@ module.exports.run = async (message) => {
   // create checkin profile if it doesn't exist
   await checkin.findOrCreate({ where: { ID: userID } }).catch(ERR);
 
-  if (await checkOngoing(userID)) return checkinFailed(message, 'You already have a ongoing verification! Please wait and be patiant.');
+  if (await checkOngoing(userID)) return checkinFailed(message, 'You already have an ongoing verification! Please wait and be patient.');
 
   if (message.member.roles.cache.has(config.functions.checkin.roles.add.allow)) return checkinFailed(message, 'You are already verified!');
   if (message.member.roles.cache.has(config.functions.checkin.roles.add.deny)) return checkinFailed(message, 'You have been denied already!');
