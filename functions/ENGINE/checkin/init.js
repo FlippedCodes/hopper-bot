@@ -95,7 +95,7 @@ module.exports.run = async (message) => {
   if (await checkOngoing(userID)) return checkinFailed(message, 'You already have an ongoing verification! Please wait and be patient.');
 
   if (message.member.roles.cache.has(config.functions.checkin.roles.add.allow)) return checkinFailed(message, 'You are already verified!');
-  if (message.member.roles.cache.has(config.functions.checkin.roles.add.deny)) return checkinFailed(message, 'You have been denied already!');
+  // if (message.member.roles.cache.has(config.functions.checkin.roles.add.deny)) return checkinFailed(message, 'You have been denied already!');
 
   const templateCheck = message.content.match(templateRegEx);
   if (templateCheck && templateCheck.length !== 3) return checkinFailed(message, 'Please follow the template!\n\nVRChat Name:\nDoB:\nAbout Me:');

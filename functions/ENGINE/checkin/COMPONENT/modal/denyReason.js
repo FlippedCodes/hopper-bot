@@ -24,7 +24,7 @@ module.exports.run = async (interaction) => {
     .addField('Denied by', `${interaction.user}`)
     .addFields(oldEmbed.fields);
   if (member) {
-    member.roles.add(config.functions.checkin.roles.add.deny);
+    // member.roles.add(config.functions.checkin.roles.add.deny);
     await member.user.send({ embeds: [embedUser] });
   }
   const logChannel = interaction.guild.channels.cache.get(config.functions.checkin.outputChannels.log);
