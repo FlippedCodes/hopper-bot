@@ -13,6 +13,7 @@ module.exports.run = async (interaction) => {
     .setTitle('Verification denied')
     // .setDescription('Your Verification has been denied!')
     .addField('Reason', reason)
+    .addField('Denied by', `${interaction.user}`)
     .setColor('RED');
   const embedLog = new MessageEmbed()
     .setTitle('Verification denied')
@@ -20,6 +21,7 @@ module.exports.run = async (interaction) => {
     .setColor('RED')
     .setThumbnail(oldEmbed.thumbnail.url)
     .addField('Reason', reason)
+    .addField('Denied by', `${interaction.user}`)
     .addFields(oldEmbed.fields);
   if (member) {
     member.roles.add(config.functions.checkin.roles.add.deny);
