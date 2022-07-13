@@ -98,7 +98,8 @@ module.exports.run = async (message) => {
   // if (message.member.roles.cache.has(config.functions.checkin.roles.add.deny)) return checkinFailed(message, 'You have been denied already!');
 
   const templateCheck = message.content.match(templateRegEx);
-  if (templateCheck && templateCheck.length !== 3) return checkinFailed(message, 'Please follow the template!\n\nVRChat Name:\nDoB:\nAbout Me:');
+  if (!templateCheck) return checkinFailed(message, 'Please follow the template!\n\nVRChat Name:\nDoB:\nAbout Me:');
+  if (templateCheck.length !== 3) return checkinFailed(message, 'Please follow the template!\n\nVRChat Name:\nDoB:\nAbout Me:');
 
   // get birthday
   const rawDate = message.content.match(dateRegEx);
