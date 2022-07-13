@@ -19,6 +19,7 @@ module.exports.run = async (interaction) => {
     .addFields(oldEmbed.fields);
   if (member) {
     member.roles.add(config.functions.checkin.roles.add.allow);
+    member.roles.add(config.functions.checkin.roles.add.allowNewComers);
     member.roles.remove(config.functions.checkin.roles.remove);
     await member.user.send({ embeds: [embedUser] });
   }
