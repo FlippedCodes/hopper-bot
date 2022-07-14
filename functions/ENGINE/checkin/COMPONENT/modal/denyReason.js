@@ -27,7 +27,7 @@ module.exports.run = async (interaction) => {
     .addFields(oldEmbed.fields);
   if (member) {
     // member.roles.add(config.functions.checkin.roles.add.deny);
-    await member.user.send({ embeds: [embedUser] }).catch();
+    await member.user.send({ embeds: [embedUser] }).catch(() => {});
   }
   const logChannel = interaction.guild.channels.cache.get(config.functions.checkin.outputChannels.log);
   await logChannel.send({ embeds: [embedLog] });

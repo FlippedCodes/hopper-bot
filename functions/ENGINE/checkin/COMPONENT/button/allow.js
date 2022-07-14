@@ -22,7 +22,7 @@ module.exports.run = async (interaction) => {
     member.roles.add(config.functions.checkin.roles.add.allow);
     member.roles.add(config.functions.checkin.roles.add.allowNewComers);
     member.roles.remove(config.functions.checkin.roles.remove);
-    await member.user.send({ embeds: [embedUser] }).catch();
+    await member.user.send({ embeds: [embedUser] }).catch(() => {});
   }
   const logChannel = interaction.guild.channels.cache.get(config.functions.checkin.outputChannels.log);
   await logChannel.send({ embeds: [embedLog] });
