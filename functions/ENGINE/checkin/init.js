@@ -10,7 +10,7 @@ const userDoB = require('../../../database/models/UserDoB');
 
 const dateRegEx = /\d{4}[-]\d{2}[-]\d{2}/gm;
 
-const templateRegEx = /\b(VRChat Name|DoB|About Me)\b/gm;
+// const templateRegEx = /\b(VRChat Name|DoB|About Me)\b/gm;
 
 async function checkOngoing(ID) {
   const result = await checkin.findOne({ where: { ID } });
@@ -97,9 +97,10 @@ module.exports.run = async (message) => {
   if (message.member.roles.cache.has(config.functions.checkin.roles.add.allow)) return checkinFailed(message, 'You are already verified!');
   // if (message.member.roles.cache.has(config.functions.checkin.roles.add.deny)) return checkinFailed(message, 'You have been denied already!');
 
-  const templateCheck = message.content.match(templateRegEx);
-  if (!templateCheck) return checkinFailed(message, 'Please follow the template!\n\nVRChat Name:\nDoB:\nAbout Me:');
-  if (templateCheck.length !== 3) return checkinFailed(message, 'Please follow the template!\n\nVRChat Name:\nDoB:\nAbout Me:');
+  // DEPRECATED: Peoples IQ is too lox to use this right
+  // const templateCheck = message.content.match(templateRegEx);
+  // if (!templateCheck) return checkinFailed(message, 'Please follow the template!\n\nVRChat Name:\nDoB:\nAbout Me:');
+  // if (templateCheck.length !== 3) return checkinFailed(message, 'Please follow the template!\n\nVRChat Name:\nDoB:\nAbout Me:');
 
   // get birthday
   const rawDate = message.content.match(dateRegEx);
