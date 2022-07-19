@@ -39,7 +39,7 @@ function sendToVerification(message, date, currentCheckin) {
         .setLabel('Keep out')
         .setStyle('DANGER'),
     ]);
-  const unixDate = date.format('X');
+  const DoB = date.format('YYYY-MM-DD');
   const creationDate = moment(message.author.createdAt).format('X');
   const age = moment().diff(date, 'years');
   const embed = new MessageEmbed()
@@ -48,7 +48,7 @@ function sendToVerification(message, date, currentCheckin) {
     .setDescription(message.content)
     .addField('Was verfied before', prettyCheck(currentCheckin.alreadyChecked), true)
     .addField('Verification attempt', `${currentCheckin.count}${currentCheckin.count === 1 ? '' : '⚠️'}`, true)
-    .addField('DoB', `<t:${unixDate}:D>`, true)
+    .addField('DoB', `${DoB}`, true)
     .addField('Age', `${age}${age >= 16 ? '' : '⚠️'}`, true)
     .addField('Creation Date', `<t:${creationDate}:D>`, true)
     .addField('Since creation', `<t:${creationDate}:R>`, true)
