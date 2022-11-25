@@ -25,17 +25,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # - name: Use Node.js ${{ matrix.node-version }}
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: ${{ matrix.node-version }}
+      - name: Spin down containers - Sundown
+        run: docker-compose down
 
-      - name: Update 3rd party docker containers
-        run: docker-compose pull
+      # - name: Update 3rd party docker containers
+      #   run: docker-compose pull
 
-      - name: Build app
-        run: docker-compose build
+      # - name: Build app
+      #   run: docker-compose build
 
+      # # - name: Spin up containers
       # - name: Spin up containers
-      - name: Spin up containers
-        run: docker-compose up -d
+      #   run: docker-compose up -d
