@@ -1,1 +1,1 @@
-Yet another verification bot for a server.
+Yet another verification bot for a server
