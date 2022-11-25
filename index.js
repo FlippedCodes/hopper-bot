@@ -63,10 +63,6 @@ client.on('ready', async () => {
   // confirm user logged in
   console.log(`[${config.package.name}] Logged in as "${client.user.tag}"!`);
 
-  // TEMP
-  console.log(client.guilds.cache.size);
-  console.log(client.guilds.cache);
-
   // run setup functions
   config.setup.setupFunctions.forEach((FCN) => {
     client.functions.get(FCN).run();
